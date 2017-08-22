@@ -1,0 +1,52 @@
+﻿<Page x:Class="UwpThemeManager.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:UwpThemeManager"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:binding="using:UwpThemeManager.BindingHelpers"
+      mc:Ignorable="d">
+
+    <Page.Resources>
+        <Style x:Key="ButtonStyle"
+               TargetType="Button">
+            <Setter Property="binding:BackgroundBindingHelper.Background"
+                    Value="ChromeBrush" />
+            <Setter Property="binding:ForegroundBindingHelper.Foreground"
+                    Value="ForegroundBrush" />
+            <Setter Property="Margin"
+                    Value="0,12,0,0" />
+            <Setter Property="HorizontalAlignment"
+                    Value="Stretch"/>
+        </Style>
+    </Page.Resources>
+    
+    <Grid Background="{Binding BackgroundBrush, Source={StaticResource ThemeManager}}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="48" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Border Background="{Binding ChromeBrush, Source={StaticResource ThemeManager}}">
+            <TextBlock Text="{Binding CurrentTheme, Source={StaticResource ThemeManager}}"
+                       Foreground="{Binding ForegroundBrush, Source={StaticResource ThemeManager}}"
+                       Style="{StaticResource SubtitleTextBlockStyle}"
+                       VerticalAlignment="Center"
+                       Margin="12,0,0,0" />
+        </Border>
+
+        <StackPanel Grid.Row="1"
+                    HorizontalAlignment="Center">
+            <Button Content="Dark theme"
+                    Style="{StaticResource ButtonStyle}"
+                    Click="DarkThemeButton_Click" />
+            <Button Content="Light Theme"
+                    Style="{StaticResource ButtonStyle}"
+                    Click="LightThemeButton_Click" />
+
+            <Button Content="Custom theme"
+                    Style="{StaticResource ButtonStyle}"
+                    Click="CustomThemeButton_Click" />
+        </StackPanel>
+    </Grid>
+</Page>
