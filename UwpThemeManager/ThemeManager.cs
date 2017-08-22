@@ -25,7 +25,8 @@ namespace UwpThemeManager
             }
         }
 
-        public string CurrentTheme => _currrentTheme;
+        public string CurrentTheme { get; private set; }
+
         public Brush BackgroundBrush => _currentThemeDictionary[nameof(BackgroundBrush)] as Brush;
         public Brush ChromeBrush => _currentThemeDictionary[nameof(ChromeBrush)] as Brush;
         public Brush ForegroundBrush => _currentThemeDictionary[nameof(ForegroundBrush)] as Brush;
@@ -34,7 +35,7 @@ namespace UwpThemeManager
         {
             _currentThemeDictionary = new ResourceDictionary();
             App.LoadComponent(_currentThemeDictionary, new Uri(path));
-            _currrentTheme = Path.GetFileNameWithoutExtension(path);
+            CurrentTheme = Path.GetFileNameWithoutExtension(path);
 
             RaisePropertyChanged();
         }
@@ -43,7 +44,7 @@ namespace UwpThemeManager
         {
             string xaml = await FileIO.ReadTextAsync(file);
             _currentThemeDictionary = XamlReader.Load(xaml) as ResourceDictionary;
-            _currrentTheme = Path.GetFileNameWithoutExtension(file.Path);
+            CurrentTheme = Path.GetFileNameWithoutExtension(file.Path);
 
             RaisePropertyChanged();
         }
@@ -60,6 +61,5 @@ namespace UwpThemeManager
             => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         private ResourceDictionary _currentThemeDictionary;
-        private string _currrentTheme;
     }
 }
