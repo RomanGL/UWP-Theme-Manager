@@ -6,16 +6,12 @@ namespace UwpThemeManager.BindingHelpers
 {
     public static class BackgroundBindingHelper
     {
-        public static string GetBackground(DependencyObject obj)
-        {
-            return (string)obj.GetValue(BackgroundProperty);
-        }
+        public static string GetBackground(DependencyObject obj) 
+            => (string)obj.GetValue(BackgroundProperty);
 
-        public static void SetBackground(DependencyObject obj, string value)
-        {
-            obj.SetValue(BackgroundProperty, value);
-        }
-        
+        public static void SetBackground(DependencyObject obj, string value) 
+            => obj.SetValue(BackgroundProperty, value);
+
         public static readonly DependencyProperty BackgroundProperty =
             DependencyProperty.RegisterAttached("Background", typeof(string), typeof(BackgroundBindingHelper), 
                 new PropertyMetadata(null, BackgroundPathPropertyChanged));

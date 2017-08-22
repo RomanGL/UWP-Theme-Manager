@@ -1,7 +1,4 @@
-﻿using System;
-using System.IO;
-using Windows.ApplicationModel.Activation;
-using Windows.Storage;
+﻿using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -31,9 +28,7 @@ namespace UwpThemeManager
                 ThemeManager.LoadTheme(ThemeManager.DarkThemePath);
 
                 if (rootFrame.Content == null)
-                {
                     rootFrame.Navigate(typeof(MainPage), e.Arguments);
-                }
 
                 Window.Current.Activate();
             }
