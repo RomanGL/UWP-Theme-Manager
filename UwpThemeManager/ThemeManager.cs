@@ -25,8 +25,7 @@ namespace UwpThemeManager
         {
             if (DesignMode.DesignModeEnabled)
             {
-                _currentThemeDictionary = ThemeManagerDesign.DesignThemeDictionary;
-                _currrentTheme = ThemeManagerDesign.CurrentTheme;
+                LoadTheme(DarkThemePath);
             }
         }
 
