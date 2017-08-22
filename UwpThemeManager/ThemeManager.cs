@@ -2,7 +2,6 @@
 using System.ComponentModel;
 using System.IO;
 using System.Threading.Tasks;
-using Windows.ApplicationModel;
 using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Markup;
@@ -19,10 +18,7 @@ namespace UwpThemeManager
 
         public ThemeManager()
         {
-            if (DesignMode.DesignModeEnabled)
-            {
-                LoadTheme(DarkThemePath);
-            }
+            LoadTheme(DarkThemePath);
         }
 
         public string CurrentTheme { get; private set; }

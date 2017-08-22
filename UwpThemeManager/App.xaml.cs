@@ -25,8 +25,6 @@ namespace UwpThemeManager
 
             if (e.PrelaunchActivated == false)
             {
-                ThemeManager.LoadTheme(ThemeManager.DarkThemePath);
-
                 if (rootFrame.Content == null)
                     rootFrame.Navigate(typeof(MainPage), e.Arguments);
 
